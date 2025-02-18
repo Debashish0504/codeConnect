@@ -1,24 +1,32 @@
-import axios from 'axios'
-import React, { useState } from 'react'
+import { useState } from "react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addUser } from "./utils/userSlice";
+import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "./utils/constant";
 
 const Login = () => {
 
     const [emailId , setEmailId] = useState("")
     const [password , setPassword] =useState("")
-
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const handleLogin = async () => {
       try {
-          const res = await axios.post('http://localhost:8000/login' , {
+          const res = await axios.post(BASE_URL +'login' , {
             emailId,
             password
           },
           {withCredentials : true}
           )
-
+          dispatch(addUser(res.data))
+          return navigate('/')
       } catch (error) {
         console.error(error)
       }
     }
+
+    
     
   return (
     <div className= "flex justify-center my-10">
@@ -27,7 +35,7 @@ const Login = () => {
       <h2 className="card-title justify-center">Login</h2>
       <label className= "form-control w-full max-w-xs my-2">
             <div className= "label">
-                <span className= "label-text">Email Id {emailId}</span>
+                <span className= "label-text">Email Id</span>
             </div>
             <input type='text' 
             value={emailId}
