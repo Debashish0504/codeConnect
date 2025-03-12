@@ -7,7 +7,7 @@ import { removeUser } from "./utils/userSlice";
 
 const NavBar = () => {
   const user = useSelector((store) => store.user);
-  console.log(user);
+  
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const handleLogout = async () =>{
@@ -25,7 +25,7 @@ const NavBar = () => {
     <div className="navbar bg-base-300">
       <div className="flex-1">
       <Link to="/" className="btn btn-ghost text-xl">
-          👩‍💻 DevTinder
+          👩‍💻 CodeConnect
         </Link>
       </div>
       {user && (
@@ -38,7 +38,9 @@ const NavBar = () => {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img alt="user photo" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                <img alt="user photo" src={user.gender === 'male' 
+            ? "https://banner2.cleanpng.com/lnd/20240919/j/a3a3dc5630c36b919c1688240ee833.webp" 
+            : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}  />
               </div>
             </div>
             <ul

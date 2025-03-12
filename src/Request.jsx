@@ -57,7 +57,9 @@ const Requests = () => {
               <img
                 alt="photo"
                 className="w-20 h-20 rounded-full"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                src={gender === 'male' 
+                ? "https://banner2.cleanpng.com/lnd/20240919/j/a3a3dc5630c36b919c1688240ee833.webp" 
+                : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} 
               />
             </div>
             <div className="text-left mx-4 ">
