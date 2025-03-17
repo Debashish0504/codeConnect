@@ -35,7 +35,7 @@ function Premium() {
           theme: {
             color: "#F37254",
           },
-          handlers : verifyPremiumMember
+          handler : verifyPremiumMember
           
         };
     
@@ -47,7 +47,7 @@ function Premium() {
         const res = await axios.get(BASE_URL + "premium/verify", {
             withCredentials: true,
           });
-      
+          
           if (res.data.isPremium) {
             setUserPremium(true);
           }
