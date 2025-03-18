@@ -5,9 +5,11 @@ import { CheckCircleIcon } from "lucide-react";
 
 function Premium() {
     const [isUserPremium,setUserPremium] = useState(false)
+
     useEffect(() => {
         verifyPremiumMember()
     },[])
+
     const handleBuyClick = async (type) => {
         const order = await axios.post(
           BASE_URL + "payment/create",
@@ -35,7 +37,7 @@ function Premium() {
           theme: {
             color: "#F37254",
           },
-          handler : verifyPremiumMember
+          handler : verifyPremiumMember,
           
         };
     
@@ -47,7 +49,8 @@ function Premium() {
         const res = await axios.get(BASE_URL + "premium/verify", {
             withCredentials: true,
           });
-          
+          console.log('front end' , res.data)
+          console.log('front end data' , res.data.isPremium)
           if (res.data.isPremium) {
             setUserPremium(true);
           }
@@ -60,9 +63,7 @@ function Premium() {
       <p className="text-gray-600 mb-6">
         You are already a premium member.Enjoy your premium benefits!
       </p>
-      <button className="bg-green-500 text-white px-6 py-3 rounded-full font-medium hover:bg-green-600 transition">
-        Go to Dashboard
-      </button>
+    
     </div>
   </div>:
     <div className="m-10 flex flex-col items-center gap-5">
